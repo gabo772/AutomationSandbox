@@ -48,16 +48,6 @@
                 "bundleName": "bootstrap-light-purple",
                 "inject": false
               },
-              {
-                "input": "src/themes/soho-light.scss",
-                "bundleName": "soho-light",
-                "inject": false
-              },
-              {
-                "input": "src/themes/soho-dark.scss",
-                "bundleName": "soho-dark",
-                "inject": false
-              },
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeflex/primeflex.css"
