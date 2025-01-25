@@ -1,0 +1,30 @@
+<div class="flex flex-column align-items-center">
+    <p-card header="Registro de usuario">
+        <div class="flex mt-4 mb-4">
+            <p-floatLabel>
+                <input id="username" type="text" pInputText [(ngModel)]="inputUsername" />
+                <label for="username">Nombre de usuario</label>
+            </p-floatLabel>
+        </div>
+        <div class="flex mt-6 mb-4">
+            <p-floatLabel>
+                <input id="password" type="text" pInputText [(ngModel)]="inputPassword" />
+                <label for="password">Contraseña</label>
+            </p-floatLabel>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <div class="flex justify-content-center gap-3">
+                <p-button severity="primary" label="Registrar" (onClick)="registerUser()" />
+                <p-button severity="secondary" label="Volver" (onClick)="goToLogin()" />
+            </div>
+
+        </ng-template>
+
+
+
+
+
+
+    </p-card>
+</div>

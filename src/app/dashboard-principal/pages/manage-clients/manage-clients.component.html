@@ -1,0 +1,109 @@
+<div class="grid">
+    <div class="lg:col-6 md:col sm:col">
+        <div class="grid">
+            <div class="col-3 col-offset-1"><label class="text-6xl mb-4 mt-4">Clientes</label></div>
+
+        </div>
+        <div class="grid">
+            <div class=" col-4 col-offset-3  sm:col-6 sm:col-offset-3 ">
+                <p-inputGroup class="mt-4">
+                    <input type="text" pInputText placeholder="Buscar clientes" />
+                    <button type="button" pButton icon="pi pi-search" class="p-button-warning"></button>
+                </p-inputGroup>
+            </div>
+
+        </div>
+        <div class="grid mt-4">
+            <div class="lg:col lg:col-offset-1 md:col sm:col">
+
+                <label class="sm:text-xs">BLUE LABEL</label>
+                <p-table [columns]="cols" [value]="data" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Correo</th>
+                            <th>Estado</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-cliente>
+                        <tr>
+                            <td>
+                                {{cliente.id}}
+                            </td>
+                            <td>
+                                {{cliente.name}}
+                            </td>
+                            <td>
+                                {{cliente.lastName}}
+                            </td>
+                            <td>
+                                {{cliente.email}}
+                            </td>
+                            <td>
+                                <p-tag [severity]="getSeverity(cliente.isActive)">{{cliente.isActive}}</p-tag>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="grid">
+            <div class="col-8 col-offset-1">
+                <div class="grid">
+                    <div class="col">
+                        <div class="flex justify-content-center"><p-button (onClick)="showDialog()"> Agregar</p-button>
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+                        <div class="flex justify-content-center"><p-button (onClick)="clean()"> Limpiar cache</p-button>
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="flex justify-content-center"><p-button (onClick)="save()"> Guardar Datos</p-button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <p-dialog header="Agregar cliente" [modal]="true" [(visible)]="visibleDialog" [style]="{ width: '25rem' }">
+            <span class="p-text-secondary block mb-5">Agrega la información</span>
+            <div class="flex align-items-center gap-3 mb-3">
+                <label for="username" class="font-semibold w-6rem">Nombre</label>
+                <input pInputText id="username" class="flex-auto" [(ngModel)]="inputName" autocomplete="off" />
+            </div>
+            <div class="flex align-items-center gap-3 mb-5">
+                <label for="email" class="font-semibold w-6rem">Apellido</label>
+                <input pInputText id="lastName" class="flex-auto" [(ngModel)]="inputLastName" autocomplete="off" />
+            </div>
+            <div class="flex align-items-center gap-3 mb-5">
+                <label for="email" class="font-semibold w-6rem">Correo</label>
+                <input pInputText id="email" class="flex-auto" [(ngModel)]="inputEmail" autocomplete="off" />
+            </div>
+            <div class="flex align-items-center gap-3 mb-5">
+                <label for="email" class="font-semibold w-6rem">Disponible</label>
+                <p-dropdown id="status" [options]="states" [(ngModel)]="inputStatus" placeholder="Estado" />
+            </div>
+
+            <div class="flex justify-content-end gap-2">
+                <p-button label="Cancelar" severity="secondary" (onClick)="visibleDialog = false" />
+                <p-button label="Guardar" severity="success" (onClick)="agregarCliente()" />
+            </div>
+        </p-dialog>
+    </div>
+
+
+</div>

@@ -1,0 +1,54 @@
+<div class="grid">
+    <div class="col">
+        <div class="grid mb-4 mt-2">
+            <div class="col-2 col-offset-10">
+                <div id="switchContainer" class="flex align-items-center align-self-end">
+                    <div id="icon" class="mr-2">
+                        <i class="pi pi-sun"></i>
+                    </div>
+                    <p-inputSwitch id="switch" [(ngModel)]="checked" (onChange)="onChangeTheme('')" />
+                    <div id="icon" class="ml-2">
+                        <i class="pi pi-moon"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="grid mt-4">
+            <div
+                class=" col col-offset-1 xl:col-2 xl:col-offset-5 lg:col-4 lg:col-offset-4 md:col-6 md:col-offset-3 sm:col-8 sm:col-offset-2">
+                <div class=" flex flex-column border-round-3xl shadow-8 p-4">
+                    <label for="username" class="mb-4 align-self-center">Username</label>
+                    <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="inputUsername" />
+                    <label for="username" class="mb-4 mt-4 align-self-center">Password</label>
+                    <input type="password" pInputText id="password" aria-describedby="username-help"
+                        [(ngModel)]="inputPassword" />
+
+                    <p-button class="align-self-center mt-4" label="ingresar" (onClick)="goToDashboard()" />
+                    <p-button class="mt-4 align-self-end" [link]="true" (onClick)="goToRegister()">registrate
+                        aqui!</p-button>
+
+
+                </div>
+                <p-progressSpinner *ngIf="loader" class="flex align-self-center mt-5" ariaLabel="loading" />
+                <p-tag *ngIf="mostrarMensaje" class="mt-4 align-self-center" icon="pi pi-times" severity="danger"
+                    [value]="message" />
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
