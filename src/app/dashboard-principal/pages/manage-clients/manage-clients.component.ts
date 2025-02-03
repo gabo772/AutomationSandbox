@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Table } from 'primeng/table'
 
 interface Column {
   field: string;
@@ -22,10 +22,14 @@ interface Data {
 })
 export class ManageClientsComponent implements OnInit {
 
+  @ViewChild("dt") table!: Table;
   inputName: string = ""
   inputLastName: string = ""
   inputEmail: string = ""
   inputStatus: string = "Activo"
+
+  first: number = 0;
+  rows: number = 5;
 
   states: string[] = ["Activo", "Inactivo"]
 
@@ -68,6 +72,11 @@ export class ManageClientsComponent implements OnInit {
   }
 
 
+  pageChange(event: any) {
+    this.first = event.first
+    this.rows = event.rows
+  }
+
   getSeverity(status: string): "success" | "danger" {
     if (status === "Activo") {
       return "success";
@@ -93,6 +102,7 @@ export class ManageClientsComponent implements OnInit {
       isActive: this.inputStatus
     }
     this.data.push({ ...cliente })
+    this.table.reset();
     this.cleanInputs()
 
   }
@@ -105,7 +115,7 @@ export class ManageClientsComponent implements OnInit {
     this.inputName = ""
     this.inputLastName = ""
     this.inputEmail = ""
-    this.inputStatus = ""
+    this.inputStatus = "Activo"
   }
 
   showDialog() {

@@ -17,7 +17,11 @@
             <div class="lg:col lg:col-offset-1 md:col sm:col">
 
                 <label class="sm:text-xs">BLUE LABEL</label>
-                <p-table [columns]="cols" [value]="data" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]">
+                <p-table #dt [columns]="cols" [value]="data" [paginator]="true" [rows]="5"
+                    [rowsPerPageOptions]="[5,10,20]"
+                    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+                    [showCurrentPageReport]="true" [first]="first" (onPage)="pageChange($event)"
+                    responsiveLayout="stack" [breakpoint]="'960px'">
                     <ng-template pTemplate="header" let-columns>
                         <tr>
                             <th>Id</th>
@@ -25,24 +29,29 @@
                             <th>Apellido</th>
                             <th>Correo</th>
                             <th>Estado</th>
+                            <th>Accion</th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-cliente>
                         <tr>
                             <td>
-                                {{cliente.id}}
+                                <span class="p-column-title">Id</span> {{cliente.id}}
                             </td>
                             <td>
-                                {{cliente.name}}
+                                <span class="p-column-title">Nombre</span> {{cliente.name}}
                             </td>
                             <td>
-                                {{cliente.lastName}}
+                                <span class="p-column-title">Apellido</span> {{cliente.lastName}}
                             </td>
                             <td>
-                                {{cliente.email}}
+                                <span class="p-column-title">Email</span> {{cliente.email}}
                             </td>
                             <td>
-                                <p-tag [severity]="getSeverity(cliente.isActive)">{{cliente.isActive}}</p-tag>
+                                <span class="p-column-title">Estado</span> <p-tag
+                                    [severity]="getSeverity(cliente.isActive)">{{cliente.isActive}}</p-tag>
+                            </td>
+                            <td>
+                                <span class="p-column-title">Accion</span>editar | eliminar
                             </td>
                         </tr>
                     </ng-template>
