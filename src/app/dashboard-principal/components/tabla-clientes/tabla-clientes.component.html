@@ -1,0 +1,58 @@
+<p-table #dt [columns]="cols" [value]="clientes" [paginator]="true" [rows]="5" selectionMode="single"
+    [metaKeySelection]="metaKey" [selection]="dataSelected" [rowsPerPageOptions]="[5,10,20]"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros" [showCurrentPageReport]="true"
+    (onPage)="pageChange($event)" responsiveLayout="stack" [breakpoint]="'960px'">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Estado</th>
+            <th>Accion</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-cliente>
+        <tr [pSelectableRow]="cliente">
+            <td>
+                <span class="p-column-title">Id</span> {{cliente.id}}
+            </td>
+            <td>
+                <span class="p-column-title">Nombre</span> {{cliente.name}}
+            </td>
+            <td>
+                <span class="p-column-title">Apellido</span> {{cliente.lastName}}
+            </td>
+            <td>
+                <span class="p-column-title">Email</span> {{cliente.email}}
+            </td>
+            <td>
+                <span class="p-column-title">Estado</span> <p-tag
+                    [severity]="getSeverity(cliente.isActive)">{{cliente.isActive}}</p-tag>
+            </td>
+            <td>
+                <span class="p-column-title">Accion</span>
+                <div class="flex justify-content-around">
+                    <p-button severity="info" label="Editar" icon="pi pi-file-edit" />
+                    <p-button severity="danger" label="Eliminar" icon="pi pi-trash" [swal]="deleteSwal" />
+                </div>
+
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+<swal #deleteSwal 
+    title="Eliminar cliente" 
+    text="Desea eliminar el cliente?" 
+    icon="error" 
+    [showCancelButton]="true"
+    [focusCancel]="true"
+    (confirm)="confirmDeleteSwal.fire()">
+</swal>
+<swal #confirmDeleteSwal 
+    title="Cliente eliminado" 
+    text="cliente se ha elimiando correctamente!" 
+    icon="success" 
+    [showConfirmButton]="true"
+    >
+</swal>

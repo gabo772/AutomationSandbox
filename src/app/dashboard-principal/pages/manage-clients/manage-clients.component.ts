@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table'
+import { Cliente } from '../../interfaces/Cliente';
+import { ManageClientsService } from '../../services/manageclient.service';
+import Swal from 'sweetalert2'
+
 
 interface Column {
   field: string;
@@ -28,6 +32,7 @@ export class ManageClientsComponent implements OnInit {
   inputEmail: string = ""
   inputStatus: string = "Activo"
 
+
   first: number = 0;
   rows: number = 5;
 
@@ -39,8 +44,11 @@ export class ManageClientsComponent implements OnInit {
 
   ]
 
+  dataSelected!: Data;
+  metaKey: boolean = true;
 
-  constructor() {
+
+  constructor(private clientesService: ManageClientsService) {
     if (localStorage.getItem("clients")) {
       this.data = JSON.parse(localStorage.getItem("clients")!)
     }
@@ -101,8 +109,9 @@ export class ManageClientsComponent implements OnInit {
       email: this.inputEmail,
       isActive: this.inputStatus
     }
-    this.data.push({ ...cliente })
-    this.table.reset();
+    this.clientesService.addCliente(cliente)
+
+
     this.cleanInputs()
 
   }
@@ -124,6 +133,10 @@ export class ManageClientsComponent implements OnInit {
 
   clean() {
     localStorage.clear();
+  }
+
+  onVisibleChanged(visible: boolean) {
+    this.visibleDialog = visible
   }
 
 

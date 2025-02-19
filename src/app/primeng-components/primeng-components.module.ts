@@ -18,6 +18,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { CardModule } from 'primeng/card';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
@@ -27,7 +28,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     ButtonModule,
@@ -46,7 +47,8 @@ import { FloatLabelModule } from 'primeng/floatlabel';
     DropdownModule,
     ProgressSpinnerModule,
     CardModule,
-    FloatLabelModule
+    FloatLabelModule,
+    SweetAlert2Module
   ]
 })
 export class PrimengComponentsModule { }

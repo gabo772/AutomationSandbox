@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { DashboardPrincipalModule } from './dashboard-principal/dashboard-principal.module';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     AppRoutingModule,
     PrimengComponentsModule,
     DashboardPrincipalModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

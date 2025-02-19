@@ -5,6 +5,10 @@ import { PrimengComponentsModule } from '../primeng-components/primeng-component
 import { FormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ManageClientsComponent } from './pages/manage-clients/manage-clients.component';
+import { TablaClientesComponent } from './components/tabla-clientes/tabla-clientes.component';
+import { InfoClienteComponent } from './components/info-cliente/info-cliente.component';
+import { AgregarClienteDialogComponent } from './components/agregar-cliente-dialog/agregar-cliente-dialog.component';
+
 
 
 
@@ -12,13 +16,17 @@ import { ManageClientsComponent } from './pages/manage-clients/manage-clients.co
 @NgModule({
   declarations: [
     DashboardPrincipalComponent,
-    ManageClientsComponent
+    ManageClientsComponent,
+    TablaClientesComponent,
+    InfoClienteComponent,
+    AgregarClienteDialogComponent
   ],
   imports: [
     FormsModule,
     CommonModule,
     PrimengComponentsModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+
   ],
   exports: [
     DashboardPrincipalComponent

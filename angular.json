@@ -24,6 +24,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "/",
+            "deployUrl": "/",
             "outputPath": "dist/automation-sandbox",
             "index": "src/index.html",
             "browser": "src/main.ts",
