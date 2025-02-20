@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table'
 import { Cliente } from '../../interfaces/Cliente';
 import { ManageClientsService } from '../../services/manageclient.service';
 import Swal from 'sweetalert2'
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 interface Columna {
   field: string;
@@ -19,6 +20,7 @@ interface Columna {
 export class TablaClientesComponent implements OnInit {
 
   @ViewChild("dt") table !: Table
+  @ViewChild("confirmDeleteSwal") swalConfirmClientDeleted!:SwalComponent
   clientes: Cliente[] = []
   cols!: Columna[]
   first = 0;
@@ -30,6 +32,9 @@ export class TablaClientesComponent implements OnInit {
     this.clientes = clientsService.clientes
 
   }
+
+
+  
 
   ngAfterViewInit() {
     this.clientsService.setTabla(this.table); // Pasa la referencia al servicio
@@ -75,12 +80,14 @@ export class TablaClientesComponent implements OnInit {
     }
   }
 
-  onDeleteClient() {
-    Swal.fire({
-      title: "Eliminar cliente",
-      text: "Seguro que desea eliminar cliente?",
-      icon: "question"
-    });
+  
+
+  onDeleteClient(cliente:Cliente){
+      this.clientsService.deleteClient(cliente.id);
+      this.clientes=this.clientsService.clientes
+      this.clientsService.saveLocalStorage();
+      this.swalConfirmClientDeleted.fire();
+      
   }
 
 

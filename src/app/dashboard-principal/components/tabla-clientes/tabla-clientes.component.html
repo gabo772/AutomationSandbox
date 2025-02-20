@@ -15,44 +15,44 @@
     <ng-template pTemplate="body" let-cliente>
         <tr [pSelectableRow]="cliente">
             <td>
-                <span class="p-column-title">Id</span> {{cliente.id}}
+                 {{cliente.id}}
             </td>
             <td>
-                <span class="p-column-title">Nombre</span> {{cliente.name}}
+                 {{cliente.name}}
             </td>
             <td>
-                <span class="p-column-title">Apellido</span> {{cliente.lastName}}
+                {{cliente.lastName}}
             </td>
             <td>
-                <span class="p-column-title">Email</span> {{cliente.email}}
+                 {{cliente.email}}
             </td>
             <td>
-                <span class="p-column-title">Estado</span> <p-tag
+                 <p-tag
                     [severity]="getSeverity(cliente.isActive)">{{cliente.isActive}}</p-tag>
             </td>
             <td>
-                <span class="p-column-title">Accion</span>
+                
                 <div class="flex justify-content-around">
                     <p-button severity="info" label="Editar" icon="pi pi-file-edit" />
-                    <p-button severity="danger" label="Eliminar" icon="pi pi-trash" [swal]="deleteSwal" />
+                    <p-button severity="danger" label="Eliminar" icon="pi pi-trash" [swal]="deleteSwal"   />
                 </div>
 
             </td>
         </tr>
-    </ng-template>
-</p-table>
-<swal #deleteSwal 
+        <swal #deleteSwal 
     title="Eliminar cliente" 
-    text="Desea eliminar el cliente?" 
+    text="Desea eliminar el cliente '{{cliente.name}}'?"  
     icon="error" 
     [showCancelButton]="true"
     [focusCancel]="true"
-    (confirm)="confirmDeleteSwal.fire()">
+    (confirm)="onDeleteClient(cliente)">
 </swal>
 <swal #confirmDeleteSwal 
     title="Cliente eliminado" 
-    text="cliente se ha elimiando correctamente!" 
+    text="El cliente '{{cliente.name}}' ha sido eliminado correctamente!" 
     icon="success" 
     [showConfirmButton]="true"
     >
 </swal>
+    </ng-template>
+</p-table>

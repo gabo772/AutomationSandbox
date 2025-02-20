@@ -93,31 +93,10 @@ export class ManageClientsComponent implements OnInit {
     }
   }
 
-  agregarCliente() {
-    let id;
-    if (localStorage.getItem("lastClientId")) {
-      id = Number.parseInt(localStorage.getItem("lastClientId")!) + 1
-    } else {
-      id = 1;
-    }
-    localStorage.setItem("lastClientId", id.toString())
-
-    let cliente = {
-      id: id,
-      name: this.inputName,
-      lastName: this.inputLastName,
-      email: this.inputEmail,
-      isActive: this.inputStatus
-    }
-    this.clientesService.addCliente(cliente)
-
-
-    this.cleanInputs()
-
-  }
+  
 
   save() {
-    localStorage.setItem("clients", JSON.stringify(this.data))
+    this.clientesService.saveLocalStorage();
   }
 
   cleanInputs() {
