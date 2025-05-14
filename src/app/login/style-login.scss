@@ -1,0 +1,52 @@
+$breakpoint-sm: 576px;
+$breakpoint-md: 1092px;
+$breakpoint-lg: 1430px;
+
+.mainPage{
+    display: flex;
+    flex-direction: column;
+}
+#loginContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    margin-top: 5%;
+    margin-left: 40%;
+}
+
+
+#switchThemeContainer{
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+
+}
+
+
+@media(max-width: $breakpoint-lg){
+    #loginContainer{
+       width: 26%;
+       margin-left: 37%;
+    }
+}
+
+@media (max-width: $breakpoint-md){
+    #loginContainer{
+        width: 30%;
+        margin-left: 35%;
+    }
+    
+}
+
+@media (max-width: $breakpoint-sm){
+    #loginContainer{
+        width: 70%;
+        margin-top: 30%;
+        margin-left: 15%;
+    }
+    
+    
+}
+
+

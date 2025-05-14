@@ -39,6 +39,11 @@ export class ManageClientsService {
         }
     }
 
+    searchClient(name:string){
+        let clients = this.clientes.filter(cliente=>cliente.name.toLowerCase().includes(name.toLowerCase()))
+        return clients;
+    }
+
     setTabla(table: Table) {
         this.tabla = table;
     }

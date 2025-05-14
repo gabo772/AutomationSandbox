@@ -1,8 +1,17 @@
-<p-table #dt [columns]="cols" [value]="clientes" [paginator]="true" [rows]="5" selectionMode="single"
-    [metaKeySelection]="metaKey" [selection]="dataSelected" [rowsPerPageOptions]="[5,10,20]"
+
+    <p-table #dt 
+    [scrollable]="true"
+    responsiveLayout="scroll"
+    [value]="clientes" 
+    [paginator]="true" 
+    [rows]="5" 
+    selectionMode="single"
+    [metaKeySelection]="metaKey" 
+    [selection]="dataSelected" 
+    [rowsPerPageOptions]="[5,10,20]"
     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros" [showCurrentPageReport]="true"
-    (onPage)="pageChange($event)" responsiveLayout="stack" [breakpoint]="'960px'">
-    <ng-template pTemplate="header" let-columns>
+    (onPage)="pageChange($event)">
+    <ng-template pTemplate="header" >
         <tr>
             <th>Id</th>
             <th>Nombre</th>
@@ -15,19 +24,19 @@
     <ng-template pTemplate="body" let-cliente>
         <tr [pSelectableRow]="cliente">
             <td>
-                 {{cliente.id}}
+                    {{cliente.id}}
             </td>
             <td>
-                 {{cliente.name}}
+                    {{cliente.name}}
             </td>
             <td>
                 {{cliente.lastName}}
             </td>
             <td>
-                 {{cliente.email}}
+                    {{cliente.email}}
             </td>
             <td>
-                 <p-tag
+                    <p-tag
                     [severity]="getSeverity(cliente.isActive)">{{cliente.isActive}}</p-tag>
             </td>
             <td>

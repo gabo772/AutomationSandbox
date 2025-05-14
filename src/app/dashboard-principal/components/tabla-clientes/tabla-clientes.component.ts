@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table'
 import { Cliente } from '../../interfaces/Cliente';
 import { ManageClientsService } from '../../services/manageclient.service';
@@ -17,10 +17,11 @@ interface Columna {
   templateUrl: './tabla-clientes.component.html',
   styles: ``
 })
-export class TablaClientesComponent implements OnInit {
+export class TablaClientesComponent  {
 
   @ViewChild("dt") table !: Table
   @ViewChild("confirmDeleteSwal") swalConfirmClientDeleted!:SwalComponent
+  @Input()
   clientes: Cliente[] = []
   cols!: Columna[]
   first = 0;
@@ -33,37 +34,10 @@ export class TablaClientesComponent implements OnInit {
 
   }
 
-
-  
-
   ngAfterViewInit() {
     this.clientsService.setTabla(this.table); // Pasa la referencia al servicio
   }
 
-  ngOnInit(): void {
-    this.cols = [
-      {
-        field: "id",
-        header: "Id"
-      },
-      {
-        field: "name",
-        header: "Nombre"
-      },
-      {
-        field: "lastName",
-        header: "Apellido"
-      },
-      {
-        field: "email",
-        header: "Correo"
-      },
-      {
-        field: "isActive",
-        header: "Activo"
-      },
-    ]
-  }
 
 
   pageChange(event: any) {

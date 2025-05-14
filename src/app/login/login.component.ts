@@ -11,7 +11,7 @@ interface Usuario {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: ``
+  styleUrl: './style-login.scss'
 })
 export class LoginComponent implements OnInit {
 

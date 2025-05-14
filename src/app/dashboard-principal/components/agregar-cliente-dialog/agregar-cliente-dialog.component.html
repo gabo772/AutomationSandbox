@@ -1,26 +1,28 @@
-<p-dialog header="Agregar cliente" [modal]="true" [(visible)]="visible" (onHide)="closeDialog()"
-    [style]="{ width: '25rem' }" (onHide)="visible = false">
-    <span class="p-text-secondary block mb-5">Agrega la información</span>
-    <div class="flex align-items-center gap-3 mb-3">
-        <label for="username" class="font-semibold w-6rem">Nombre</label>
-        <input pInputText id="username" class="flex-auto" [(ngModel)]="inputName" autocomplete="off" />
-    </div>
-    <div class="flex align-items-center gap-3 mb-5">
-        <label for="email" class="font-semibold w-6rem">Apellido</label>
-        <input pInputText id="lastName" class="flex-auto" [(ngModel)]="inputLastName" autocomplete="off" />
-    </div>
-    <div class="flex align-items-center gap-3 mb-5">
-        <label for="email" class="font-semibold w-6rem">Correo</label>
-        <input pInputText id="email" class="flex-auto" [(ngModel)]="inputEmail" autocomplete="off" />
-    </div>
-    <div class="flex align-items-center gap-3 mb-5">
-        <label for="email" class="font-semibold w-6rem">Disponible</label>
-        <p-dropdown id="status" [options]="states" [(ngModel)]="inputStatus" placeholder="Estado" />
-    </div>
-    <br>
-    <br>
-    <div class="flex justify-content-end gap-2">
-        <p-button label="Cancelar" severity="secondary" (onClick)="visible = false" />
-        <p-button label="Guardar" severity="success" (onClick)="agregarCliente()" />
-    </div>
-</p-dialog>
+
+        <p-dialog header="Agregar cliente" [modal]="true" [(visible)]="visible" (onHide)="closeDialog()"
+        [style]="{ width: '25rem' }" (onHide)="visible = false">
+        <span class="p-text-secondary block mb-5">Agrega la información</span>
+        <div class="flex align-items-center gap-3 mb-3">
+            <label for="username" class="font-semibold w-6rem">Nombre</label>
+            <input pInputText id="username" class="flex-auto" [(ngModel)]="inputName" autocomplete="off" />
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="email" class="font-semibold w-6rem">Apellido</label>
+            <input pInputText id="lastName" class="flex-auto" [(ngModel)]="inputLastName" autocomplete="off" />
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="email" class="font-semibold w-6rem">Correo</label>
+            <input pInputText id="email" class="flex-auto" [(ngModel)]="inputEmail" autocomplete="off" />
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="email" class="font-semibold w-6rem">Disponible</label>
+            <p-dropdown id="status" [options]="states" [(ngModel)]="inputStatus" placeholder="Estado" />
+        </div>
+        <br>
+        <br>
+        <div class="flex justify-content-end gap-2">
+            <p-button label="Cancelar" severity="secondary" (onClick)="visible = false" />
+            <p-button label="Guardar" severity="success" (onClick)="agregarCliente()" />
+        </div>
+    </p-dialog>
+

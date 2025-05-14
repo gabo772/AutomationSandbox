@@ -1,38 +1,33 @@
 <div class="grid">
-    <div class="lg:col-6 md:col sm:col">
+    <div class="col">
         <div class="grid">
-            <div class="col-3 col-offset-1"><label class="text-6xl mb-4 mt-4">Clientes</label></div>
-
+            <div class="col text-center">
+                <label class="text-6xl mb-4 mt-4">Gestión de clientes</label>
+            </div>
         </div>
         <div class="grid">
-            <div class=" col-4 col-offset-3  sm:col-6 sm:col-offset-3 ">
+            <div class="col">
                 <p-inputGroup class="mt-4">
-                    <input type="text" pInputText placeholder="Buscar clientes" />
-                    <button type="button" pButton icon="pi pi-search" class="p-button-warning"></button>
+                    <input type="text" pInputText placeholder="Buscar clientes" [(ngModel)]="inputName" />
+                    <button type="button" pButton icon="pi pi-search" class="p-button-warning" (click)="buscarCliente(inputName)"></button>
                 </p-inputGroup>
             </div>
-
         </div>
         <div class="grid mt-4">
-            <div class="lg:col lg:col-offset-1 md:col sm:col">
-
-                <label class="sm:text-xs">BLUE LABEL</label>
-                <app-tabla-clientes />
-
-
+            <div class="col lg:col-8 lg:col-offset-2">
+                <app-tabla-clientes  [clientes]="data" />  
+                 
             </div>
-
+            
         </div>
 
-
         <div class="grid">
-            <div class="col-8 col-offset-1">
+            <div class="col">
                 <div class="grid">
                     <div class="col">
                         <div class="flex justify-content-center"><p-button (onClick)="showDialog()"> Agregar</p-button>
                         </div>
                     </div>
-
 
                     <div class="col">
                         <div class="flex justify-content-center"><p-button (onClick)="clean()"> Limpiar cache</p-button>
@@ -49,9 +44,15 @@
             </div>
 
         </div>
+        <div class="grid">
+            <div class="col">
+                <app-agregar-cliente-dialog (onVisibleDialogChanged)="onVisibleChanged($event)"
+                [visible]="visibleDialog"></app-agregar-cliente-dialog>
+            </div>
+        </div>
 
-        <app-agregar-cliente-dialog (onVisibleDialogChanged)="onVisibleChanged($event)"
-            [visible]="visibleDialog"></app-agregar-cliente-dialog>
+
+        
     </div>
 
 

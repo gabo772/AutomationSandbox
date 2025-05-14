@@ -1,17 +1,17 @@
-<div class="grid">
-    <div class="col">
 
+<div class="grid">
+    <div class="col">         
         <p-menubar [model]="items">
             <ng-template pTemplate="end">
                 <p-button [link]="true" (onClick)="exit()"><i class="pi pi-sign-out"></i></p-button>
-
-
             </ng-template>
         </p-menubar>
-        <router-outlet></router-outlet>
-
-
+                            
     </div>
-
-
 </div>
+<div class="grid">
+    <div class="col">
+        <router-outlet></router-outlet> 
+    </div>
+</div>
+        
